@@ -11,7 +11,6 @@ cement==2.8.2
 certifi==2021.5.30
 cffi==1.16.0
 charset-normalizer==2.0.4
-click==8.1.7
 cmdstanpy==1.2.2
 colorama==0.4.3
 contourpy==1.2.1
@@ -33,7 +32,6 @@ importlib_resources==6.4.0
 itsdangerous==2.1.2
 janus==1.0.0
 Jinja2==3.1.2
-jmespath==1.0.1
 joblib==1.4.0
 kiwisolver==1.4.5
 lxml==4.9.3
@@ -45,7 +43,6 @@ packaging==24.0
 paho-mqtt==1.6.1
 pandas==2.2.2
 paramiko==3.4.0
-pathspec==0.10.1
 pillow==10.2.0
 platformdirs==4.2.0
 prophet==1.1.5
@@ -58,25 +55,4 @@ pyparsing==3.1.2
 PySocks==1.7.1
 python-dateutil==2.9.0.post0
 pytz==2021.1
-PyWavelets==1.7.0
-PyYAML==6.0.1
-requests==2.31.0
-requests-unixsocket==0.3.0
-rsa==4.7.2
-s3transfer==0.10.1
-scikit-learn==1.4.2
-scipy==1.13.0
-semantic-version==2.8.5
-six==1.16.0
-sqlparse==0.4.2
-stanio==0.5.0
-storage==0.0.4.3
-termcolor==1.1.0
-threadpoolctl==3.4.0
-tqdm==4.66.2
-typing_extensions==4.11.0
-tzdata==2024.1
-urllib3==1.26.6
-virtualenv==20.25.1
-wcwidth==0.1.9
-Werkzeug==3.0.0
+PyWavelets==1.6.0  # <-- Updated version
