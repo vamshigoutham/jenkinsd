@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="543650e6-b55a-4c1a-9147-f1f0ab5b984d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.ebextensions/01_python.config" beforeDir="false" afterPath="$PROJECT_DIR$/.ebextensions/01_python.config" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,7 +92,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1728041935829</updated>
-      <workItem from="1728041937286" duration="10077000" />
+      <workItem from="1728041937286" duration="11060000" />
     </task>
     <task id="LOCAL-00001" summary="safasdfa">
       <option name="closed" value="true" />
@@ -181,7 +182,23 @@
       <option name="project" value="LOCAL" />
       <updated>1728155702339</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="fdfadf">
+      <option name="closed" value="true" />
+      <created>1728156697312</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1728156697312</updated>
+    </task>
+    <task id="LOCAL-00013" summary="fdfadf">
+      <option name="closed" value="true" />
+      <created>1728156757475</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1728156757475</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
