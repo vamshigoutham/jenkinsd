@@ -4,7 +4,9 @@ branch-defaults:
 global:
   profile: eb-cli
 commands:
+  00_remove_old_venv:
+    command: "rm -rf /var/app/staging/venv"  # Ensure the old virtual environment is removed
   01_create_venv:
-    command: "python3 -m venv /var/app/staging/venv"
+    command: "python3 -m venv /var/app/staging/venv"  # Create the virtual environment
   02_install_requirements:
-    command: "/var/app/staging/venv/bin/pip install -r /var/app/staging/requirements.txt"
+    command: "/var/app/staging/venv/bin/pip install -r /var/app/staging/requirements.txt"  # Install the dependencies in the virtual environment
