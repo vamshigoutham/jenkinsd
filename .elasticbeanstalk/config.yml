@@ -1,11 +1,4 @@
-branch-defaults:
-  main:
-    environment: my-flask-env
-global:
-  application_name: my-flask-app
-  default_region: us-east-1  # Adjust based on your region
-  profile: eb-cli
-
+# .ebextensions/01_flask_setup.config
 commands:
   00_remove_old_venv:
     command: "rm -rf /var/app/staging/venv"  # Ensure old virtual environment is removed
@@ -14,22 +7,20 @@ commands:
   02_install_requirements:
     command: "/var/app/staging/venv/bin/pip install -r /var/app/staging/requirements.txt"  # Install dependencies in venv
   03_fix_permissions:
-    command: "chown -R ec2-user:ec2-user /var/app/staging/venv"  # Fix permission issues if any
+    command: "chown -R ec2-user:ec2-user /var/app/staging/venv"  # Fix permission issues
 
 option_settings:
   aws:elasticbeanstalk:container:python:
-    WSGIPath: app:app  # Set the WSGI entry point for your Flask app
+    WSGIPath: app:app  # Entry point for your Flask app (adjust if needed)
 
   aws:elasticbeanstalk:environment:proxy:staticfiles:
-    /static: static  # Configure static files (optional, adjust if your app has static files)
-
-environment:
-  PYTHONPATH: /var/app/staging/venv/bin  # Set the PYTHONPATH to the virtual environment
-
-  # Additional environment variables for your app can be added here:
-  FLASK_ENV: production  # Example environment variable, adjust based on your needs
+    /static: static  # Serve static files (adjust if your app uses static files)
 
 container_commands:
   01_migrate_db:
-    command: "python /var/app/staging/manage.py db upgrade"  # Optional: Example for database migration
+    command: "source /var/app/staging/venv/bin/activate && python /var/app/staging/manage.py db upgrade"  # Optional: Example for database migration
+
+environment:
+  PYTHONPATH: /var/app/staging/venv/bin  # Set the PYTHONPATH to the virtual environment
+  FLASK_ENV: production  # Adjust environment variables for Flask (optional)
 
