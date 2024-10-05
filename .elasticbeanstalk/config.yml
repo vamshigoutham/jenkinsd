@@ -3,10 +3,23 @@ branch-defaults:
     environment: my-flask-env
 global:
   profile: eb-cli
+
 commands:
   00_remove_old_venv:
-    command: "rm -rf /var/app/staging/venv"
+    command: "rm -rf /var/app/staging/venv"  # Ensure old virtual environment is removed
   01_create_venv:
-    command: "/usr/bin/python3 -m venv /var/app/staging/venv"
+    command: "/usr/bin/python3 -m venv /var/app/staging/venv"  # Create new virtual environment
   02_install_requirements:
-    command: "/var/app/staging/venv/bin/pip install -r /var/app/staging/requirements.txt"
+    command: "/var/app/staging/venv/bin/pip install -r /var/app/staging/requirements.txt"  # Install dependencies in venv
+  03_fix_permissions:
+    command: "chown -R ec2-user:ec2-user /var/app/staging/venv"  # Fix permission issues if any
+
+option_settings:
+  aws:elasticbeanstalk:container:python:
+    WSGIPath: application.py  # Set the WSGI entry point for your Flask app (change if needed)
+
+  aws:elasticbeanstalk:environment:proxy:staticfiles:
+    /static: static  # Configure static files (optional, depending on your app setup)
+
+environment:
+  PYTHONPATH: /var/app/staging/venv/bin  # Set the PYTHONPATH to the virtual environment
