@@ -5,22 +5,18 @@ commands:
   01_create_venv:
     command: "/usr/bin/python3 -m venv /var/app/staging/venv"  # Create new virtual environment
   02_install_requirements:
-    command: "/var/app/staging/venv/bin/pip install -r /var/app/staging/requirements.txt"  # Install dependencies in venv
+    command: "/var/app/staging/venv/bin/pip install --upgrade pip && /var/app/staging/venv/bin/pip install -r /var/app/staging/requirements.txt"  # Install dependencies in venv
   03_fix_permissions:
-    command: "chown -R ec2-user:ec2-user /var/app/staging/venv"  # Fix permission issues
+    command: "chown -R webapp:webapp /var/app/staging/venv"  # Fix permission issues
 
 option_settings:
   aws:elasticbeanstalk:container:python:
-    WSGIPath: app:app  # Entry point for your Flask app (adjust if needed)
-
-  aws:elasticbeanstalk:environment:proxy:staticfiles:
-    /static: static  # Serve static files (adjust if your app uses static files)
+    WSGIPath: app:app  # Set the WSGI entry point for your Flask app (adjust if needed)
 
 container_commands:
-  01_migrate_db:
-    command: "source /var/app/staging/venv/bin/activate && python /var/app/staging/manage.py db upgrade"  # Optional: Example for database migration
+  01_activate_venv:
+    command: "source /var/app/staging/venv/bin/activate"  # Ensure virtual environment is activated
 
 environment:
   PYTHONPATH: /var/app/staging/venv/bin  # Set the PYTHONPATH to the virtual environment
-  FLASK_ENV: production  # Adjust environment variables for Flask (optional)
-
+  FLASK_ENV: production  # Set Flask environment to production

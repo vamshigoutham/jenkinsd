@@ -5,9 +5,4 @@ itsdangerous==2.2.0
 Jinja2==3.1.4
 MarkupSafe==2.1.5
 Werkzeug==3.0.4
-
-# Optional packages, add if your app uses them
-Flask-SQLAlchemy==3.0.0  # For working with databases
-Flask-Migrate==4.0.4  # For database migrations
-gunicorn==21.2.0  # Production WSGI server for running your Flask app
-psycopg2-binary==2.9.3  # Postgres support, add if using Postgres
+gunicorn==21.2.0  # Gunicorn for production WSGI server
