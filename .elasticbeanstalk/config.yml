@@ -2,6 +2,8 @@ branch-defaults:
   main:
     environment: my-flask-env
 global:
+  application_name: my-flask-app
+  default_region: us-east-1  # Adjust based on your region
   profile: eb-cli
 
 commands:
@@ -16,10 +18,18 @@ commands:
 
 option_settings:
   aws:elasticbeanstalk:container:python:
-    WSGIPath: application.py  # Set the WSGI entry point for your Flask app (change if needed)
+    WSGIPath: app:app  # Set the WSGI entry point for your Flask app
 
   aws:elasticbeanstalk:environment:proxy:staticfiles:
-    /static: static  # Configure static files (optional, depending on your app setup)
+    /static: static  # Configure static files (optional, adjust if your app has static files)
 
 environment:
   PYTHONPATH: /var/app/staging/venv/bin  # Set the PYTHONPATH to the virtual environment
+
+  # Additional environment variables for your app can be added here:
+  FLASK_ENV: production  # Example environment variable, adjust based on your needs
+
+container_commands:
+  01_migrate_db:
+    command: "python /var/app/staging/manage.py db upgrade"  # Optional: Example for database migration
+
